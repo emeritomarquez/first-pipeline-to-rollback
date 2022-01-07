@@ -124,7 +124,9 @@ jobs:
       - run:
           name: Configure server
           command: |
-            ansible-playbook -i inventory.txt main4.yml
+            ansible-playbook -i inventory main4.yml
+      - destroy_environment
+        when: on_fail
 
   # Exercise: Smoke Testing
 #  smoke_test:
