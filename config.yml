@@ -116,6 +116,8 @@ jobs:
       - run:
           name: Edit main4.yml
           command: |       
+            cat  inventory.txt
+            cat  inventory.txt | head -1
             cat  inventory.txt | head -1 >> main4.yml
             cat  main5.yml >> main4.yml
             cat  main4.yml
