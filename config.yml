@@ -85,13 +85,13 @@ jobs:
           paths:
             - inventory.txt
 
-  download_file:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - run: cat inventory.txt
+#  download_file:
+#    docker:
+#      - image: circleci/node:13.8.0
+#    steps:
+#      - attach_workspace:
+#          at: ~/project
+#      - run: cat inventory.txt
 
 #   Exercise: Config and Deployment
   configure_infrastructure:
