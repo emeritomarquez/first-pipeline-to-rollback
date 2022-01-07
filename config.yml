@@ -263,9 +263,9 @@ workflows:
       - upload_file:
           requires:
             - create_infrastructure
-      - download_file:
-          requires:
-            - upload_file
+#      - download_file:
+#          requires:
+#            - upload_file
       - configure_infrastructure:
           requires:
             - upload_file
