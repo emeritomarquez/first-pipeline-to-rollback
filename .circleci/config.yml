@@ -125,8 +125,6 @@ jobs:
           name: Configure server
           command: |
             ansible-playbook -i inventory main4.yml
-      - destroy_environment
-        when: on_fail
 
   # Exercise: Smoke Testing
 #  smoke_test:
@@ -273,7 +271,10 @@ workflows:
       - configure_infrastructure:
           requires:
             - upload_file
-#      - create_and_deploy_front_end
+      - destroy_environment
+          when: on_fail
+
+ #      - create_and_deploy_front_end
 #      - promote_to_production:
 #          requires:
 #            - create_and_deploy_front_end
