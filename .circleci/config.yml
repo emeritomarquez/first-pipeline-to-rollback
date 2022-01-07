@@ -81,7 +81,7 @@ jobs:
           command: |
             aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text | tail -1 >> ~/inventory.txt
       - persist_to_workspace:
-          root: ~/
+          root: ~/project
           paths:
             - inventory.txt
 
@@ -90,7 +90,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: ~/
+          at: ~/project
       - run: cat ~/inventory.txt
 
 #   Exercise: Config and Deployment
