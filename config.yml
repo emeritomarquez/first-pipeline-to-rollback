@@ -135,8 +135,8 @@ jobs:
       - run:
           name: smoke test
           command: |
-            webip = tail -1 inventory.txt
-            URL="http://$webip:3000"
+            webip = $(tail -1 inventory.txt)
+            URL="http://${webip}:3000"
             # Test if website exists
             if curl -s --head ${URL}
             if curl -s --head ${URL}
@@ -272,8 +272,10 @@ workflows:
       - configure_infrastructure:
           requires:
             - upload_file
-      - smoke_test
-#      - create_and_deploy_front_end
+      - smoke_test:
+          requires:
+            - configure_infrastructure
+        #      - create_and_deploy_front_end
 #      - promote_to_production:
 #          requires:
 #            - create_and_deploy_front_end
