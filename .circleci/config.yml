@@ -110,10 +110,15 @@ jobs:
       - run:
           name: Add instance IP to main4.yml
           command: |
-            echo -n " hosts: "  >> main4.yml       
-            cat  ~/project/inventory.txt | head -1 >> main4.yml
-            cat  ~/project/main5.yml >> main4.yml
-            cat  ~/project/main4.yml
+            echo -n "  hosts: "  >> main4.yml
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Edit main4.yml
+          command: |       
+            cat  inventory.txt | head -1 >> main4.yml
+            cat  main5.yml >> main4.yml
+            cat  main4.yml
       - run:
           name: Configure server
           command: |
