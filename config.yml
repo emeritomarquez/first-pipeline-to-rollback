@@ -75,11 +75,11 @@ jobs:
       - run:
           name: Create inventory file
           command: 
-            echo [all] > inventory.txt 
+            echo [ubuntu] > ~/project/inventory.txt 
       - run: 
           name: Create Cloudformation Stack
           command: |
-            aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text | tail -1 >> ~/inventory.txt
+            aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text | tail -1 >> ~/project/inventory.txt
       - persist_to_workspace:
           root: ~/project
           paths:
