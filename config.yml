@@ -135,6 +135,8 @@ jobs:
       - run:
           name: smoke test
           command: |
+            ls -al
+            cat inventory.txt
             webip = $(tail -1 inventory.txt)
             URL="http://${webip}:3000"
             # Test if website exists
