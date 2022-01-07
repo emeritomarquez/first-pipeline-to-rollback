@@ -135,7 +135,7 @@ jobs:
       - run:
           name: smoke test
           command: |
-            webip = $(tail -1 inventory.txt)
+            webip=$(tail -1 inventory.txt)
             URL="http://${webip}:3000"
             # Test if website exists
             if curl -s --head ${URL}
