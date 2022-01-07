@@ -127,24 +127,25 @@ jobs:
             ansible-playbook -i inventory.txt main4.yml
 
   # Exercise: Smoke Testing
-#  smoke_test:
-#    docker:
-#      - image: alpine:latest
-#    steps:
-#      - run: apk add --update curl
-#      - run:
-#          name: smoke test
-#          command: |
-#            URL="https://blog.udacity.com/"
-#            # Test if website exists
-#            if curl -s --head ${URL}
-#            if curl -s --head ${URL}
-#            then
-#              return 0
-#            else
-#              return 1
-#            fi
-#      - destroy_environment
+  smoke_test:
+    docker:
+      - image: alpine:latest
+    steps:
+      - run: apk add --update curl
+      - run:
+          name: smoke test
+          command: |
+            webip = tail -1 inventory.txt
+            URL="http://$webip:3000"
+            # Test if website exists
+            if curl -s --head ${URL}
+            if curl -s --head ${URL}
+            then
+              return 0
+            else
+              return 1
+            fi
+      - destroy_environment
 
   # Exercise: Promote to Production - Job 1
   # Prerequisite:
@@ -271,7 +272,8 @@ workflows:
       - configure_infrastructure:
           requires:
             - upload_file
- #      - create_and_deploy_front_end
+      - smoke_test
+#      - create_and_deploy_front_end
 #      - promote_to_production:
 #          requires:
 #            - create_and_deploy_front_end
