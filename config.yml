@@ -271,9 +271,6 @@ workflows:
       - configure_infrastructure:
           requires:
             - upload_file
-      - destroy_environment
-          when: on_fail
-
  #      - create_and_deploy_front_end
 #      - promote_to_production:
 #          requires:
