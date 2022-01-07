@@ -91,7 +91,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
-      - run: cat ~/inventory.txt
+      - run: cat inventory.txt
 
 #   Exercise: Config and Deployment
   configure_infrastructure:
