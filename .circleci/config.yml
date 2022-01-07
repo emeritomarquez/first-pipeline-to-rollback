@@ -108,6 +108,13 @@ jobs:
             apk add --update ansible
             apk add --update ansible
       - run:
+          name: Add instance IP to main4.yml
+          command: |
+            echo -n " hosts: "  >> main4.yml       
+            cat  ~/project/inventory.txt | head -1 >> main4.yml
+            cat  ~/project/main5.yml >> main4.yml
+            cat  ~/project/main4.yml
+      - run:
           name: Configure server
           command: |
             ansible-playbook -i inventory.txt main4.yml
