@@ -141,7 +141,6 @@ jobs:
             URL="http://${webip}:3000"
             # Test if website exists
             if curl -s --head ${URL}
-            if curl -s --head ${URL}
             then
               return 0
             else
